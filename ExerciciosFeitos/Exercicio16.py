@@ -11,6 +11,16 @@ litroTintaUsada = area/3
 
 #latas = math.ceil(litroTintaUsada/18)
 
+
+
+latas = 0
+if litroTintaUsada % 18 == 0:
+    latas = litroTintaUsada/18
+else:
+    latas = int(litroTintaUsada/18) + 1
+
+
+"""
 completar = (litroTintaUsada/18)
 
 comp = ( completar * 100)
@@ -19,7 +29,9 @@ resto = 10 - comp
 
 latas = (resto/10) + (comp/10)
 
-total = latas * 80.00
 
+
+"""
+total = latas * 80.00
 
 print("Será necessário comprar ",latas,"(s) Dando um total de R$",total)
