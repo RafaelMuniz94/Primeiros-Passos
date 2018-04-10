@@ -8,6 +8,38 @@
 
 """
 
+def definirMenorPreco(litros):
+
+    quantidadeLatas = int(litros/3.6) + 1
+    quantidadeGaloes = int(litros/18) + 1
+
+    total = (quantidadeLatas * 3.6) + (quantidadeGaloes * 18)
+    precoL = quantidadeLatas * 25
+    precoG = quantidadeGaloes * 80
+
+    while total > litros:
+        if precoG > precoL:
+           quantidadeGaloes = quantidadeGaloes - 1
+        else:
+            quantidadeLatas = quantidadeLatas - 1
+
+        precoL = quantidadeLatas * 25
+        precoG = quantidadeGaloes * 80
+
+        totalAtual = (quantidadeLatas * 3.6) + (quantidadeGaloes * 18)
+
+        if totalAtual > litros:
+            total = totalAtual
+        else:
+            break
+
+    resposta = (quantidadeGaloes,quantidadeLatas)
+
+    return resposta
+
+
+
+
 
 area = int(input("Digite o tamanho em metros quadrados da área que será pintada: "))
 litrosUsados = area/6
@@ -42,5 +74,12 @@ galoes = int((litrosUsados - latas)/3.6) + 1
 total = (latas * 80) + (galoes * 25)
 
 """
+
+t = definirMenorPreco(litrosUsados)
+
+galoes = t[0]
+latas = t[1]
+
+total = (galoes * 80) + (latas * 25) + (total * 0.01)
 
 print("Devem ser compradas ",latas," latas e ",galoes," galões totalizando R$ ",total)
